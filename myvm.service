@@ -1,0 +1,21 @@
+[Unit]
+Description=myvmname
+After=network.target virtualbox.service
+Before=runlevel2.target shutdown.target
+ 
+[Service]
+User=myusername
+Group=vboxusers
+Type=forking
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+ 
+ExecStart=/usr/bin/VBoxManage startvm myvmname --type headless
+ExecStop=/usr/bin/VBoxManage controlvm myvmname acpipowerbutton
+ 
+[Install]
+WantedBy=multi-user.target
