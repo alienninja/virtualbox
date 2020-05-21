@@ -55,3 +55,4 @@ vboxmanage list runningvms
 ```
 
 
+reference: https://linux.m2osw.com/autostart-virtualbox-vms
